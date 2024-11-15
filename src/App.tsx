@@ -86,14 +86,15 @@ function App() {
   
       const interval = setInterval(() => {
         element.innerText = value
-          .split('')
-          .map((letter, index) => {
-            if (index < iteration) {
-              return value[index];
-            }
-            return letters[Math.floor(Math.random() * letters.length)];
-          })
-          .join('');
+        .split('')
+        .map((_, index) => {
+          if (index < iteration) {
+            return value[index];
+          }
+          return letters[Math.floor(Math.random() * letters.length)];
+        })
+        .join('');
+
   
         if (iteration >= value.length) {
           clearInterval(interval);
@@ -120,31 +121,6 @@ function App() {
     return '#2a2a2a';
   };
 
-  const handleMouseOver = () => {
-    if (!passwordRef.current || !password) return;
-
-    const element = passwordRef.current;
-    const value = password;
-    let iteration = 0;
-
-    const interval = setInterval(() => {
-      element.innerText = value
-        .split('')
-        .map((letter, index) => {
-          if (index < iteration) {
-            return value[index];
-          }
-          return letters[Math.floor(Math.random() * 86)];
-        })
-        .join('');
-
-      if (iteration >= value.length) {
-        clearInterval(interval);
-      }
-
-      iteration += 1 / 3;
-    }, 30);
-  };
 
   return (
     <>
